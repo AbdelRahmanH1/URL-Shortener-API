@@ -1,15 +1,15 @@
 export const validation = (schema) => {
   return (req, res, next) => {
     const data = { ...req.body, ...req.params, ...req.query };
-    const { error } = schema.validate(data, { abortEarly: false });
 
-    if (error) {
-      const messages = error.details.map((errorObj) => {
-        return errorObj.message;
+    const result = schema.validate(data, { abortEarly: false });
+
+    if (result.error) {
+      const messages = result.error.details.map((errorOBJ) => {
+        return errorOBJ.message;
       });
-      const err = new Error(messages, 400);
-      return next(err);
+      return next(new Error(messages, { cause: 401 }));
     }
-    next();
+    return next();
   };
 };
