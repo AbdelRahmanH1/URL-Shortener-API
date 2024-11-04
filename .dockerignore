@@ -1,0 +1,7 @@
+Dockerfile
+node_modules/
+npm-debug.log
+__test__       # Exclude test files from production builds
+.vscode/
+.idea/
+.DS_Store

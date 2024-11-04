@@ -1,0 +1,8 @@
+services:
+  shorter_api:
+    volumes:
+      - ./src:/app/src:ro
+      - ./__test__:/app/__test__:ro
+    env_file:
+      - .env.development
+    command: npm run dev
