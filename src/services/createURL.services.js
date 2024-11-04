@@ -11,5 +11,3 @@ export const generateShortUrl = (length) => {
 
   return shortUrl;
 };
-
-console.log(generateShortUrl(6));
