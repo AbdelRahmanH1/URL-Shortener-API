@@ -7,3 +7,7 @@ export const urlOrignalSchema = Joi.object({
     })
     .required(),
 }).required();
+
+export const shortUrlSchema = Joi.object({
+  shortUrl: Joi.string().length(6).required(),
+}).required();
