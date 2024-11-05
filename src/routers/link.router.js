@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import * as controller from '../controllers/link.controller.js';
 import { validation } from '../middlewares/validation.schema.js';
-import * as schema from '../schemas/links.schema.js';
+import * as schema from '../schemas/link.schema.js';
 const route = Router();
 
 route.post(
@@ -9,5 +9,15 @@ route.post(
   validation(schema.urlOrignalSchema),
   controller.createShortUrl,
 );
-route.get('/:url', controller.getOrginal);
+route.get(
+  '/:shortUrl',
+  validation(schema.shortUrlSchema),
+  controller.getOrginal,
+);
+
+route.get(
+  '/stats/:shortUrl',
+  validation(schema.shortUrlSchema),
+  controller.getStats,
+);
 export default route;
