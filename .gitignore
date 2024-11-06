@@ -9,7 +9,6 @@ package-lock.json
 coverage/
 
 # Ignore test files in production
-__test__/
 /coverage
 # Ignore environment variable files
 .env
