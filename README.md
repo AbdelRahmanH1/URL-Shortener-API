@@ -123,8 +123,9 @@ npm start
 ## Postman Collection
 
 For easier API testing, you can import the Postman collection included in the repository:
-1-Download the collection file: URL Shortener API.postman_collection.json
-2-Open Postman, click Import, and select the collection file.
+
+1. Download the collection file: `URL Shortener API.postman_collection.json`
+2. Open Postman, click _Import_, and select the collection file.
 
 ## Conclusion
 
