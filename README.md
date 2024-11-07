@@ -32,6 +32,33 @@ install dependencies
 npm install
 ```
 
+## Environment Variables
+
+To run the project properly, create the following environment files in the root directory:
+
+1. .env.development
+2. .env.production
+   Both files should include the necessary environment variables for your application to run correctly. Below are the recommended variables:
+
+### .env.development
+
+```bash
+    NODE_ENV=development
+    PORT=4000
+    DATABASEURL=MONGO_URL
+    MONGO_INITDB_ROOT_USERNAME=USERNAME
+    MONGO_INITDB_ROOT_PASSWORD=PASSWORD
+    MONGO_INITDB_DATABASE=DATABASE_NAME
+```
+
+### .env.production
+
+```bash
+NODE_ENV=production
+PORT=7000
+DATABASEURL=MONGO_URL
+```
+
 ## Running Application
 
 Run the project (development mode)
