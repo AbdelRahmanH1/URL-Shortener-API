@@ -1,0 +1,113 @@
+{
+	"info": {
+		"_postman_id": "1d138f82-6cc3-461b-92bf-8bed66e3e428",
+		"name": "URL Shortener API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28835091"
+	},
+	"item": [
+		{
+			"name": "URL Shorter",
+			"item": [
+				{
+					"name": "addLink",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"let responseData = pm.response.json();\r",
+									"\r",
+									"\r",
+									"if (responseData.success && responseData.link) {\r",
+									"    \r",
+									"    const shortUrl = responseData.link.split('/').pop();\r",
+									"    \r",
+									"   \r",
+									"    pm.environment.set(\"shortenedUrl\", shortUrl);\r",
+									"    console.log(\"Shortened URL saved in 'url short' environment under 'shortenedUrl':\", shortUrl);\r",
+									"} else {\r",
+									"    console.log(\"Failed to retrieve shortened URL.\");\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url\":\"https://www.facebook.com/\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/shorten",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shorten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "redirect to orginal url",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/{{shortenedUrl}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"{{shortenedUrl}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Stat",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/stats/{{shortenedUrl}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"stats",
+								"{{shortenedUrl}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
